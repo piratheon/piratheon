@@ -1,6 +1,6 @@
-# Hi there, I'm chafiq-dev 👋
+# Hi there, I'm Chafiq El IBRAHIMI 👋
 
-![Profile views](https://komarev.com/ghpvc/?username=chafiq-dev&color=brightgreen)
+![Profile views](https://komarev.com/ghpvc/?username=piratheon&color=brightgreen)
 
 ## 👨‍💻 About Me
 
@@ -23,7 +23,7 @@ Feel free to explore my repos, fork, and collaborate.
 ---
 
 ### 🛠️ Featured Projects
-see [repositories](https://github.com/chafiq-dev?tab=repositories) tab
+see [repositories](https://github.com/piratheon?tab=repositories) tab
 
 ### 🔧 Technologies & Tools
 
@@ -31,7 +31,7 @@ see [repositories](https://github.com/chafiq-dev?tab=repositories) tab
 
 ### 📊 GitHub Stats
 
-[![chafiq-dev's GitHub stats](https://github-readme-stats.vercel.app/api?username=chafiq-dev\&show_icons=true\&theme=radical\&hide_border=true\&include_all_commits=true\&count_private=true)](https://github.com/chafiq-dev)
+[![piratheon's GitHub stats](https://github-readme-stats.vercel.app/api?username=piratheon\&show_icons=true\&theme=radical\&hide_border=true\&include_all_commits=true\&count_private=true)](https://github.com/piratheon)
 
-[![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=chafiq-dev\&layout=compact\&theme=radical\&hide_border=true)](https://github.com/chafiq-dev)
+[![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=piratheon\&layout=compact\&theme=radical\&hide_border=true)](https://github.com/piratheon)
 
