@@ -142,7 +142,7 @@ Available commands:
         },
                     neofetch: `
         <div class="neofetch">
-            <img class="neofetch-icon" src="./.github/icon.png" alt="icon">
+            <img class="neofetch-icon" src="https://raw.githubusercontent.com/piratheon/piratheon/refs/heads/main/.github/icon.png" alt="icon">
             <div class="neofetch-text">
                 <div class="nf-host"><span class="nf-user">piratheon@archlinux</span></div>
                 <div class="nf-sep">---------------------------------</div>
