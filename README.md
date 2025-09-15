@@ -73,4 +73,4 @@ Check out [my included profile details](./about_me.md) for more!
 
 > “I'm not a vibe coder btw”
 
-_You’ll find more about me in the included [about_me.md](./about_me.md)!_
+_You’ll find more about me in my [**portfolio**](https://piratheon.github.io/piratheon/)!_
