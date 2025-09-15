@@ -4,34 +4,73 @@
 
 ## 👨‍💻 About Me
 
-Hey, I’m **Chafiq Elibrahimi** — a Linux/Unix enthusiast, web developer, and AI tinkerer with a love for building tools that blend technical precision with creativity. I design and develop modern, efficient, and minimalist solutions for both the terminal and the web, while keeping performance, usability, and elegance at the core.
+Hey, I’m **Chafiq El IBRAHIMI** — a student and passionate hobby developer.  
+I’m a Linux/Unix enthusiast (I use ArchLinux, btw), desktop ricer, and a proud distro hopper.  
+I love building and breaking things: from creative CLI tools to desktop apps (mostly for Linux), and even the occasional VM-destroying virus (in the name of learning and fun!).
 
-I enjoy creating:
+- 🎵 Music lover, graphics tinkerer, and terminal enjoyer
+- 🐧 I rice my Linux daily and love customizing my setup
+- 💻 Cybersecurity explorer at HackTheBox & TryHackMe
+- 🦠 Hobby virus maker (for VMs only, of course!)
+- 🔍 Always learning, always experimenting
 
-* ⚙️ Linux/Unix utilities and automation tools
-* 🔮 AI-powered apps and experiments
-* 🌐 Sleek, functional, and responsive web interfaces
-* ♻️ Open-source projects that anyone can learn from and build upon
-* ✨ Code that’s as clean under the hood as it looks on the surface
+> “I don’t just use my OS, I make it my own.”
 
-> I don’t just write code — I **refine, test, and rethink** until it feels right.
-
-Feel free to explore my repos, fork, and collaborate.
-
-📧 **Contact Me at:** [chafiq.dev@gmail.com](mailto:chafiq.dev@gmail.com)
+Check out [my included profile details](./about_me.md) for more!
 
 ---
 
 ### 🛠️ Featured Projects
-see [repositories](https://github.com/piratheon?tab=repositories) tab
 
-### 🔧 Technologies & Tools
+- [ASCII2MID](https://github.com/piratheon/ASCII2MID): Convert ASCII art to MIDI music!
+- [ORI](https://github.com/piratheon/ORI): OpenRouter Interactive Assistant for Unix / Unix-like Environments (Alpha version is avaible btw)
+- [ASCII-ArtGen](https://github.com/piratheon/ASCII-ArtGen): Generate ASCII art with style
+- [Harpocrates](https://github.com/piratheon/Harpocrates): Encrypt and securely hide files inside images, right in your browser
+- See more in my [repositories](https://github.com/piratheon?tab=repositories)
 
-![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge\&logo=javascript\&logoColor=black) ![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge\&logo=python\&logoColor=white) ![Node.js](https://img.shields.io/badge/Node.js-339933?style=for-the-badge\&logo=node.js\&logoColor=white) ![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge\&logo=html5\&logoColor=white) ![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge\&logo=css3\&logoColor=white) ![Bash](https://img.shields.io/badge/Bash-121011?style=for-the-badge\&logo=gnu-bash\&logoColor=white) ![Git](https://img.shields.io/badge/Git-F05032?style=for-the-badge\&logo=git\&logoColor=white) ![Linux](https://img.shields.io/badge/Linux-FCC624?style=for-the-badge\&logo=linux\&logoColor=black)
+---
+
+### 🔧 Languages & Tools
+
+![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)
+![C++](https://img.shields.io/badge/C++-00599C?style=for-the-badge&logo=cplusplus&logoColor=white)
+![Bash](https://img.shields.io/badge/Bash-121011?style=for-the-badge&logo=gnubash&logoColor=white)
+![PowerShell](https://img.shields.io/badge/Powershell-5391FE?style=for-the-badge&logo=powershell&logoColor=white)
+![CMD](https://img.shields.io/badge/CMD-000000?style=for-the-badge&logo=windows&logoColor=white)
+![Linux](https://img.shields.io/badge/Linux-FCC624?style=for-the-badge&logo=linux&logoColor=black)
+![ArchLinux](https://img.shields.io/badge/ArchLinux-1793D1?style=for-the-badge&logo=archlinux&logoColor=white)
+
+---
+
+### 🎸 Interests
+
+- Music & audio programming
+- Creative graphics and desktop UI/UX
+- Linux ricing and customization
+- CLI utilities and automation
+- Cybersecurity & ethical hacking
+- Distro hopping & system tweaking
+- Breaking (and fixing) VMs for fun
+
+---
+
+### 📫 Connect with Me
+
+- **Facebook:** [piratheon](https://facebook.com/piratheon)
+- **Instagram:** [piratheon](https://instagram.com/piratheon)
+- **Threads:** [piratheon](https://threads.net/@piratheon)
+- **Email:** chafiq.dev@gmail.com
+
+---
 
 ### 📊 GitHub Stats
 
-[![piratheon's GitHub stats](https://github-readme-stats.vercel.app/api?username=piratheon\&show_icons=true\&theme=radical\&hide_border=true\&include_all_commits=true\&count_private=true)](https://github.com/piratheon)
+[![piratheon's GitHub stats](https://github-readme-stats.vercel.app/api?username=piratheon&show_icons=true&theme=radical&hide_border=true&include_all_commits=true&count_private=true)](https://github.com/piratheon)
 
-[![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=piratheon\&layout=compact\&theme=radical\&hide_border=true)](https://github.com/piratheon)
+[![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=piratheon&layout=compact&theme=radical&hide_border=true)](https://github.com/piratheon)
 
+---
+
+> “I'm not a vibe coder btw”
+
+_You’ll find more about me in the included [about_me.md](./about_me.md)!_
