@@ -1,0 +1,232 @@
+:root {
+    --bg-color-dark: #1a1b26;
+    --fg-color-dark: #c0caf5;
+    --border-color-dark: #414868;
+    --accent-color: #bb9af7;
+    --terminal-line-height: 1.05;
+    --terminal-line-padding: 0.08rem;
+    --green: #9ece6a;
+    --red: #f7768e;
+    --yellow: #e0af68;
+    --blue: #7aa2f7;
+    --font-family: 'Fira Code', monospace;
+}
+
+body {
+    background-color: var(--bg-color-dark);
+    color: var(--fg-color-dark);
+    font-family: var(--font-family);
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    height: 100vh;
+}
+
+#desktop {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('./.github/bg.jpg'); /* A subtle background */
+    background-size: cover;
+    background-position: center;
+}
+
+/* --- Terminal Styles --- */
+#terminal {
+    width: 80%;
+    max-width: 800px;
+    height: 50%;
+    max-height: 500px;
+    background: rgba(26, 27, 38, 0.85);
+    backdrop-filter: blur(10px);
+    border: 1px solid var(--border-color-dark);
+    border-radius: 8px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    display: flex;
+    flex-direction: column;
+    z-index: 10;
+    transition: all 0.3s ease;
+}
+
+/* Make terminal behave like other windows (centered on large screens) */
+.draggable-window { position: absolute; }
+
+.window.focused {
+    box-shadow: 0 12px 40px rgba(0,0,0,0.6);
+    transform: translateZ(0);
+}
+
+#terminal-header {
+    background: #2e303e;
+    padding: 8px 12px;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    display: flex;
+    align-items: center;
+    font-size: 0.8em;
+    color: #a9b1d6;
+}
+.header-dots { display: flex; margin-right: 10px; }
+.dot { height: 12px; width: 12px; border-radius: 50%; margin: 0 4px; }
+.dot.red { background: var(--red); }
+.dot.yellow { background: var(--yellow); }
+.dot.green { background: var(--green); }
+
+#terminal-body {
+    flex-grow: 1;
+    padding: 10px;
+    overflow-y: auto;
+    font-size: 0.9em;
+}
+
+#output .command { color: var(--accent-color); font-weight: bold; }
+#output .result { white-space: pre-wrap; margin: 0; padding: var(--terminal-line-padding) 0; line-height: var(--terminal-line-height); }
+#output .result a { color: var(--green); text-decoration: none; }
+#output .result a:hover { text-decoration: underline; }
+#output .error { color: var(--red); }
+
+/* Remove default margins for block elements inside the terminal to avoid gaps */
+#terminal-body p, #terminal-body div, #terminal-body h1, #terminal-body h2, #terminal-body h3, #terminal-body ul, #terminal-body li {
+    margin: 0;
+    padding: 0;
+}
+
+.input-line { display: flex; }
+.prompt { white-space: nowrap; }
+.user { color: var(--green); }
+.tilde { color: var(--blue); }
+#command-input {
+    background: transparent;
+    border: none;
+    color: var(--fg-color-dark);
+    font-family: var(--font-family);
+    flex-grow: 1;
+    padding-left: 10px;
+}
+#command-input:focus { outline: none; }
+#command-input::after {
+    content: '_';
+    animation: blink 1s step-end infinite;
+}
+
+@keyframes blink { 50% { opacity: 0; } }
+
+/* --- Window Styles --- */
+.window {
+    position: absolute;
+    background: rgba(26, 27, 38, 0.9);
+    backdrop-filter: blur(10px);
+    border: 1px solid var(--border-color-dark);
+    border-radius: 8px;
+    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.4);
+    min-width: 300px;
+    min-height: 200px;
+    z-index: 100;
+    display: flex;
+    flex-direction: column;
+    /* disable native resize to avoid accidental resizing while dragging */
+    resize: none;
+    overflow: hidden;
+}
+
+/* Fixed-size windows (non-terminal) */
+.fixed-window {
+    width: 520px !important;
+    height: 340px !important;
+    min-width: 520px !important;
+    min-height: 340px !important;
+    max-width: 520px !important;
+    max-height: 340px !important;
+}
+
+.window-header {
+    background: #2e303e;
+    padding: 8px 12px;
+    cursor: move;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    justify-content: flex-start;
+    align-items: center;
+    color: var(--fg-color-dark);
+    font-weight: bold;
+}
+.window-header { cursor: grab; -webkit-user-select: none; user-select: none; }
+.window-header:active { cursor: grabbing; }
+.window-title { user-select: none; flex: 1; }
+.window-controls { display: flex; }
+.window-controls.start { margin-right: 6px; }
+.window-controls.end { margin-left: auto; }
+.window-controls .control {
+    width: 12px; height: 12px; border-radius: 50%; margin-left: 8px; cursor: pointer;
+}
+.window-controls .control { pointer-events: auto; }
+.control.close { background-color: var(--red); }
+.control.minimize { background-color: var(--yellow); }
+.control.maximize { background-color: var(--green); }
+
+.window-body {
+    padding: 15px;
+    flex-grow: 1;
+    overflow-y: auto;
+    line-height: 1.6;
+}
+.window-body h2 { color: var(--accent-color); border-bottom: 1px solid var(--border-color-dark); padding-bottom: 5px; }
+.window-body ul { list-style: none; padding: 0; }
+.window-body li { margin-bottom: 10px; }
+.window-body .project {
+    border-left: 3px solid var(--accent-color);
+    padding-left: 10px;
+    margin-bottom: 15px;
+}
+.window-body .project h3 { margin: 0 0 5px 0; color: var(--green); }
+.window-body .project a { color: var(--blue); }
+.window-body .skills-grid { display: flex; flex-wrap: wrap; gap: 10px; }
+.window-body .skill-badge { padding: 5px 10px; background-color: var(--border-color-dark); border-radius: 5px; font-size: 0.9em; }
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    #terminal {
+        width: 100%;
+        height: 100%;
+        max-width: 100%;
+        max-height: 100%;
+        border-radius: 0;
+        border: none;
+    }
+    .window {
+        width: 90% !important;
+        left: 5% !important;
+        top: 5% !important;
+        height: 80% !important;
+    }
+}
+
+/* NOTE: initial centering is handled in JS (pixel-based) to avoid CSS transforms that break dragging math */
+
+/* --- Neofetch styling --- */
+.neofetch {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem; /* tighter gap */
+    color: var(--accent-color);
+}
+.neofetch-icon {
+    width: 150px; /* relative to font size so it matches text height */
+    height: 150px;
+    object-fit: contain;
+    display: block;
+}
+.neofetch-text { line-height:0.5; }
+.neofetch .nf-user { color: var(--green); }
+.neofetch .nf-sep { color: var(--border-color-dark); margin: 0.1rem 0; }
+
+@media (max-width: 480px) {
+    .neofetch { flex-direction: row; gap: 0.5rem; }
+    .neofetch-icon { width: 2rem; height: 2rem; }
+}

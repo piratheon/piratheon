@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chafiq El IBRAHIMI [Piratheon OS]</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body class="dark-mode">
+
+    <div id="desktop">
+        </div>
+
+    <div id="terminal" class="window draggable-window">
+        <div class="window-header" id="terminal-header">
+            <div class="header-dots">
+                <span class="dot red"></span>
+                <span class="dot yellow"></span>
+                <span class="dot green"></span>
+            </div>
+            <span class="window-title">bash — piratheon@archlinux</span>
+        </div>
+        <div id="terminal-body" class="window-body">
+            <div id="output"></div>
+            <div class="input-line">
+                <span class="prompt"><span class="user">piratheon@archlinux</span><span class="tilde">~</span>$</span>
+                <input type="text" id="command-input" autocomplete="off" autofocus>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
