@@ -31,7 +31,7 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    background-image: url('.github/bg.jpg'); /* A subtle background */
+    background-image: url('https://raw.githubusercontent.com/piratheon/piratheon/refs/heads/main/.github/bg.jpg'); /* A subtle background */
     background-size: cover;
     background-position: center;
 }
