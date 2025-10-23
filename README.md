@@ -30,8 +30,8 @@ Check out [my included profile details](./about_me.md) for more!
 
 ### 🛠️ Featured Projects
 
+- [ORI](https://github.com/piratheon/ORI): A powerful OpenRouter Interactive Assistant for Unix / Unix-like Environments
 - [ASCII2MID](https://github.com/piratheon/ASCII2MID): Convert ASCII art to MIDI music!
-- [ORI](https://github.com/piratheon/ORI): OpenRouter Interactive Assistant for Unix / Unix-like Environments (Alpha version is avaible btw)
 - [ASCII-ArtGen](https://github.com/piratheon/ASCII-ArtGen): Generate ASCII art with style
 - [Harpocrates](https://github.com/piratheon/Harpocrates): Encrypt and securely hide files inside images, right in your browser
 - See more in my [repositories](https://github.com/piratheon?tab=repositories)
