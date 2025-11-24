@@ -1,0 +1,45 @@
+<svg width="480" height="150" viewBox="0 0 480 150" fill="none" xmlns="http://www.w3.org/2000/svg">
+
+  <!-- Background -->
+  <rect width="480" height="150" rx="18" fill="#0a0a0c"/>
+
+  <!-- Outer glow ring -->
+  <circle cx="80" cy="75" r="46" stroke="#3c3f47" stroke-width="2" />
+  <circle cx="80" cy="75" r="46" stroke="#556" stroke-width="1" filter="url(#g1)"/>
+
+  <!-- Inner symbol (tri-arc) -->
+  <path d="
+    M80 40
+    C102 55, 102 95, 80 110
+    C58 95, 58 55, 80 40
+  " stroke="#b2bec3" stroke-width="2.4" fill="none"/>
+
+  <!-- Three nodes inside -->
+  <circle cx="80" cy="55" r="4" fill="#dfe6e9"/>
+  <circle cx="95" cy="75" r="4" fill="#9aa0a6"/>
+  <circle cx="80" cy="95" r="4" fill="#717980"/>
+
+  <!-- Title -->
+  <text x="150" y="72" fill="#e2e4e8" font-size="34" font-family="monospace" font-weight="600"
+        letter-spacing="2">
+    piratheon
+  </text>
+
+  <!-- Subtitle -->
+  <text x="150" y="104" fill="#7f8c8d" font-size="16" font-family="monospace"
+        letter-spacing="1">
+    dark · cyber · linuxcraft
+  </text>
+
+  <!-- Glow Filter -->
+  <defs>
+    <filter id="g1">
+      <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+</svg>
