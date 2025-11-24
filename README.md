@@ -1,15 +1,25 @@
 # 👋 Hi, I’m Chafiq El IBRAHIMI (aka piratheon)
 
-```ASCII
-██████╗ ██╗██████╗  █████╗ ████████╗██╗  ██╗███████╗ ██████╗ ███╗   ██╗
-██╔══██╗██║██╔══██╗██╔══██╗╚══██╔══╝██║  ██║██╔════╝██╔═══██╗████╗  ██║
-██████╔╝██║██████╔╝███████║   ██║   ███████║█████╗  ██║   ██║██╔██╗ ██║
-██╔═══╝ ██║██╔══██╗██╔══██║   ██║   ██╔══██║██╔══╝  ██║   ██║██║╚██╗██║
-██║     ██║██║  ██║██║  ██║   ██║   ██║  ██║███████╗╚██████╔╝██║ ╚████║
-╚═╝     ╚═╝╚═╝  ╚═╝╚═╝  ╚═╝   ╚═╝   ╚═╝  ╚═╝╚══════╝ ╚═════╝ ╚═╝  ╚═══╝
-````
-
-![Profile views](https://komarev.com/ghpvc/?username=piratheon\&color=brightgreen)
+<table>
+<tbody>
+  <tr>
+      <td>
+        <img align="left" alt="xD" src="/banner.svg"/>
+      </td>
+      <td>
+      <img src="https://readme-typing-svg.demolab.com/?lines=Welcome+to+my+GitHub!;I'm+Piratheon;A+Linux+lover;Also+a+web+pentester;I+use+Arch+BTW!;Check+out+also+my+portfolio!">
+      <br>
+      <h3>Technologies & Tools:</h3>
+      <img src="https://img.shields.io/badge/Python-3776AB?style=for-the-badge&amp;logo=python&amp;logoColor=white">
+      <img src="https://img.shields.io/badge/C++-00599C?style=for-the-badge&amp;logo=cplusplus&amp;logoColor=white">
+      <img src="https://img.shields.io/badge/Bash-121011?style=for-the-badge&amp;logo=gnubash&amp;logoColor=white"><br>
+      <img src="https://img.shields.io/badge/Powershell-5391FE?style=for-the-badge&amp;logo=powershell&amp;logoColor=white">
+      <img src="https://img.shields.io/badge/Linux-FCC624?style=for-the-badge&amp;logo=linux&amp;logoColor=black">
+      <img src="https://img.shields.io/badge/ArchLinux-1793D1?style=for-the-badge&amp;logo=archlinux&amp;logoColor=white">   
+      </td>
+  </tr>
+</tbody>
+</table>
 
 ---
 
@@ -47,18 +57,6 @@ I create software that respects **user autonomy** and the **beauty of simplicity
 
 ---
 
-## ⚙️ Technologies & Tools
-
-![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge\&logo=python\&logoColor=white)
-![C++](https://img.shields.io/badge/C++-00599C?style=for-the-badge\&logo=cplusplus\&logoColor=white)
-![Bash](https://img.shields.io/badge/Bash-121011?style=for-the-badge\&logo=gnubash\&logoColor=white)
-![PowerShell](https://img.shields.io/badge/Powershell-5391FE?style=for-the-badge\&logo=powershell\&logoColor=white)
-![CMD](https://img.shields.io/badge/CMD-000000?style=for-the-badge\&logo=windows\&logoColor=white)
-![Linux](https://img.shields.io/badge/Linux-FCC624?style=for-the-badge\&logo=linux\&logoColor=black)
-![ArchLinux](https://img.shields.io/badge/ArchLinux-1793D1?style=for-the-badge\&logo=archlinux\&logoColor=white)
-
----
-
 ## 🎸 Interests
 
 * Linux customization & UI/UX aesthetics
@@ -77,13 +75,6 @@ I create software that respects **user autonomy** and the **beauty of simplicity
 * **Facebook:** [piratheon](https://facebook.com/piratheon)
 * **Threads:** [@piratheon](https://threads.net/@piratheon)
 * **Email:** [chafiq.dev@gmail.com](mailto:chafiq.dev@gmail.com)
-
----
-
-## 📊 GitHub Stats
-
-[![piratheon's GitHub stats](https://github-readme-stats.vercel.app/api?username=piratheon\&show_icons=true\&theme=radical\&hide_border=true\&include_all_commits=true\&count_private=true)](https://github.com/piratheon)
-[![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=piratheon\&layout=compact\&theme=radical\&hide_border=true)](https://github.com/piratheon)
 
 ---
 
