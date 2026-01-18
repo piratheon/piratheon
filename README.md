@@ -7,22 +7,14 @@
         <img align="left" alt="xD" src="/banner.svg"/>
       </td>
       <td>
-      <img src="https://readme-typing-svg.demolab.com/?lines=Welcome+to+my+GitHub!;I'm+Piratheon;A+Linux+lover;Also+a+web+pentester;I+use+Arch+BTW!;Check+out+also+my+portfolio!">
-      <br>
-      <h3>Technologies & Tools:</h3>
-      <img src="https://img.shields.io/badge/Python-3776AB?style=for-the-badge&amp;logo=python&amp;logoColor=white">
-      <img src="https://img.shields.io/badge/C++-00599C?style=for-the-badge&amp;logo=cplusplus&amp;logoColor=white">
-      <img src="https://img.shields.io/badge/Bash-121011?style=for-the-badge&amp;logo=gnubash&amp;logoColor=white"><br>
-      <img src="https://img.shields.io/badge/Powershell-5391FE?style=for-the-badge&amp;logo=powershell&amp;logoColor=white">
-      <img src="https://img.shields.io/badge/Linux-FCC624?style=for-the-badge&amp;logo=linux&amp;logoColor=black">
-      <img src="https://img.shields.io/badge/ArchLinux-1793D1?style=for-the-badge&amp;logo=archlinux&amp;logoColor=white">   
+      <img align="right" alt="xD" src="https://github-readme-stats.vercel.app/api/top-langs/?username=piratheon&amp;layout=compact&amp;theme=dark"/>
       </td>
   </tr>
 </tbody>
 </table>
 
+<img src="https://img.shields.io/badge/Python-3776AB?style=for-the-badge&amp;logo=python&amp;logoColor=white"><img src="https://img.shields.io/badge/C++-00599C?style=for-the-badge&amp;logo=cplusplus&amp;logoColor=white"><img src="https://img.shields.io/badge/Bash-121011?style=for-the-badge&amp;logo=gnubash&amp;logoColor=white"><img src="https://img.shields.io/badge/Powershell-5391FE?style=for-the-badge&amp;logo=powershell&amp;logoColor=white"><img src="https://img.shields.io/badge/Linux-FCC624?style=for-the-badge&amp;logo=linux&amp;logoColor=black"><img src="https://img.shields.io/badge/ArchLinux-1793D1?style=for-the-badge&amp;logo=archlinux&amp;logoColor=white">
 ---
-
 ## 🧠 About Me
 
 I’m **Chafiq El Ibrahimi**, a **Linux-based developer, ethical hacker**, and **digital craftsman**.
