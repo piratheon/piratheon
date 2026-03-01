@@ -7,7 +7,7 @@
         <img align="left" alt="xD" src="/banner.svg"/>
       </td>
       <td>
-      <img align="right" alt="xD" src="https://github-readme-stats.vercel.app/api/top-langs/?username=piratheon&amp;layout=compact&amp;theme=dark"/>
+        <a href="https://git.io/streak-stats"><img src="https://streak-stats.demolab.com?user=piratheon&theme=tokyonight-duo&border_radius=16&mode=weekly" alt="GitHub Streak" /></a>
       </td>
   </tr>
 </tbody>
