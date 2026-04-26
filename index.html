@@ -1,38 +1,1276 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chafiq El IBRAHIMI [Piratheon OS]</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;700&display=swap" rel="stylesheet">
-    <meta property="og:image" content="https://raw.githubusercontent.com/piratheon/piratheon/refs/heads/main/.github/preview.png"/>   
+  <meta charset="UTF-8" />
+  <link rel="icon" href=".github/piratheon_eye.svg" type="image/svg+xml">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Chafiq El Ibrahimi — Linux-focused developer, ethical security researcher, and builder of privacy-respecting system tooling." />
+  <meta name="theme-color" content="#0a0e14" />
+  <title>Piratheon - Portfolio</title>
+  
+  <!-- Preconnect to CDNs -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" />
+  
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  
+  <!-- Three.js (loaded async) -->
+  <script src="https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.min.js" defer></script>
+  
+  <style>
+    /* ===== CSS VARIABLES & RESET ===== */
+    :root {
+      --bg-primary: #0a0e14;
+      --bg-surface: rgba(22, 28, 40, 0.7);
+      --bg-surface-hover: rgba(30, 38, 54, 0.85);
+      --accent-primary: #6366f1;
+      --accent-secondary: #22d3ee;
+      --text-primary: #f1f5f9;
+      --text-secondary: #94a3b8;
+      --border-color: rgba(148, 163, 184, 0.15);
+      --shadow-lg: 0 10px 40px -10px rgba(0, 0, 0, 0.5);
+      --shadow-glass: 0 4px 24px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+      --radius-lg: 16px;
+      --radius-md: 12px;
+      --radius-sm: 8px;
+      --transition-fluid: cubic-bezier(0.16, 1, 0.3, 1);
+      --transition-base: 250ms var(--transition-fluid);
+      --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+      --container-max: 1200px;
+      --section-padding: clamp(4rem, 8vw, 6rem);
+      --telegram-bg: #17212b;
+      --telegram-user: #2b5278;
+      --telegram-agent: #182533;
+      --telegram-accent: #5288c1;
+      --ton-accent: #0098ea;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      :root { --transition-base: 0ms; }
+      *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; scroll-behavior: auto !important; }
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--bg-primary);
+      color: var(--text-primary);
+      font-family: var(--font-body);
+      line-height: 1.6;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+    img, picture, video, canvas, svg { display: block; max-width: 100%; }
+    a { color: inherit; text-decoration: none; }
+    button { font: inherit; background: none; border: none; cursor: pointer; }
+    input, textarea { font: inherit; }
+    :focus-visible { outline: 2px solid var(--accent-primary); outline-offset: 2px; }
+
+    /* ===== UTILITIES ===== */
+    .container { width: 100%; max-width: var(--container-max); margin-inline: auto; padding-inline: clamp(1.5rem, 4vw, 2rem); }
+    .section { padding-block: var(--section-padding); }
+    .glass {
+      background: var(--bg-surface);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-glass);
+    }
+    .mono { font-family: var(--font-mono); font-size: 0.95em; }
+    .accent { color: var(--accent-primary); }
+    .accent-secondary { color: var(--accent-secondary); }
+    .text-gradient {
+      background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+    .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
+    .badge {
+      display: inline-flex; align-items: center; gap: 0.35rem;
+      padding: 0.25rem 0.6rem; border-radius: 999px;
+      font-size: 0.75rem; font-weight: 500; font-family: var(--font-mono);
+      background: rgba(99, 102, 241, 0.15); color: var(--accent-primary);
+      border: 1px solid rgba(99, 102, 241, 0.3);
+    }
+    .badge svg { width: 12px; height: 12px; }
+    .badge.ton {
+      background: rgba(0, 152, 234, 0.15);
+      color: var(--ton-accent);
+      border-color: rgba(0, 152, 234, 0.3);
+    }
+    .badge.aur {
+      background: rgba(15, 15, 15, 0.3);
+      color: #f1f5f9;
+      border-color: rgba(255, 255, 255, 0.2);
+    }
+
+    /* ===== HEADER ===== */
+    header {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      padding-block: 1rem;
+      transition: background var(--transition-base), backdrop-filter var(--transition-base);
+    }
+    header.scrolled {
+      background: rgba(10, 14, 20, 0.85);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--border-color);
+    }
+    .header-inner {
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 1.5rem;
+    }
+    .logo {
+      font-weight: 700; font-size: 1.25rem; letter-spacing: -0.02em;
+      display: flex; align-items: center; gap: 0.5rem;
+    }
+    .logo-mark {
+      width: 28px; height: 28px; border-radius: 8px;
+      background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+      display: grid; place-items: center;
+      font-family: var(--font-mono); font-size: 0.85rem; font-weight: 600;
+    }
+    nav ul {
+      display: flex; gap: clamp(1rem, 3vw, 2rem); list-style: none;
+    }
+    nav a {
+      font-weight: 500; font-size: 0.95rem; color: var(--text-secondary);
+      padding: 0.5rem 0; position: relative; transition: color var(--transition-base);
+    }
+    nav a:hover, nav a[aria-current="page"] { color: var(--text-primary); }
+    nav a::after {
+      content: ''; position: absolute; bottom: 0; left: 0; width: 0; height: 2px;
+      background: var(--accent-primary); transition: width var(--transition-base);
+      border-radius: 2px;
+    }
+    nav a:hover::after, nav a[aria-current="page"]::after { width: 100%; }
+
+    .nav-toggle { display: none; flex-direction: column; gap: 5px; padding: 0.5rem; }
+    .nav-toggle span {
+      width: 24px; height: 2px; background: var(--text-primary);
+      border-radius: 2px; transition: transform var(--transition-base), opacity var(--transition-base);
+    }
+
+    /* ===== HERO SECTION ===== */
+    #hero {
+      min-height: 100vh; display: grid; place-items: center;
+      position: relative; overflow: hidden; padding-top: 4rem;
+    }
+    .hero-content {
+      position: relative; z-index: 2; text-align: center; max-width: 700px;
+      padding-inline: 1rem;
+    }
+    .hero-title {
+      font-size: clamp(2.5rem, 6vw, 4rem); font-weight: 700; line-height: 1.05;
+      letter-spacing: -0.03em; margin-bottom: 1.25rem;
+    }
+    .hero-subtitle {
+      font-size: clamp(1.1rem, 2.5vw, 1.35rem); color: var(--text-secondary);
+      margin-bottom: 2rem; max-width: 600px; margin-inline: auto;
+    }
+    .hero-cta {
+      display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;
+      margin-top: 1.5rem;
+    }
+    .btn {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      padding: 0.85rem 1.5rem; border-radius: var(--radius-md);
+      font-weight: 500; transition: all var(--transition-base);
+      border: 1px solid transparent;
+    }
+    .btn-primary {
+      background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+      color: white; box-shadow: 0 4px 20px rgba(99, 102, 241, 0.4);
+    }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(99, 102, 241, 0.6); }
+    .btn-outline {
+      background: transparent; border-color: var(--border-color); color: var(--text-primary);
+    }
+    .btn-outline:hover { background: var(--bg-surface-hover); border-color: var(--accent-primary); }
+
+    #canvas-container {
+      position: absolute; inset: 0; z-index: 1; pointer-events: none;
+      opacity: 0.9; transition: opacity var(--transition-base);
+    }
+    #canvas-container.hidden { opacity: 0; }
+
+    .scroll-indicator {
+      position: absolute; bottom: 2rem; left: 50%; transform: translateX(-50%);
+      display: flex; flex-direction: column; align-items: center; gap: 0.5rem;
+      color: var(--text-secondary); font-size: 0.85rem;
+    }
+    .scroll-indicator::after {
+      content: ''; width: 1px; height: 40px; background: linear-gradient(to bottom, var(--accent-primary), transparent);
+      animation: scrollPulse 2s ease-in-out infinite;
+    }
+    @keyframes scrollPulse { 0%, 100% { opacity: 0.3; } 50% { opacity: 1; } }
+
+    /* ===== AI FOCUS SECTION ===== */
+    #ai-focus { background: linear-gradient(180deg, transparent, rgba(15, 20, 30, 0.5)); }
+    .section-header { text-align: center; max-width: 700px; margin-inline: auto; margin-bottom: 3rem; }
+    .section-title { font-size: clamp(1.75rem, 4vw, 2.5rem); font-weight: 700; margin-bottom: 1rem; }
+    .section-desc { color: var(--text-secondary); font-size: 1.1rem; }
+
+    .project-spotlight {
+      display: grid; gap: 2.5rem; align-items: center;
+      grid-template-columns: 1fr;
+    }
+    @media (min-width: 900px) {
+      .project-spotlight { grid-template-columns: 1.1fr 0.9fr; }
+    }
+    .spotlight-content h3 { font-size: 1.5rem; margin-bottom: 1rem; }
+    .spotlight-content p { color: var(--text-secondary); margin-bottom: 1.5rem; }
+    .features-grid {
+      display: grid; gap: 1rem; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      margin: 1.5rem 0;
+    }
+    .feature-item {
+      display: flex; align-items: flex-start; gap: 0.75rem; font-size: 0.95rem;
+    }
+    .feature-item::before {
+      content: ''; width: 6px; height: 6px; border-radius: 50%;
+      background: var(--accent-secondary); margin-top: 0.45rem; flex-shrink: 0;
+    }
+    .spotlight-actions { display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 1rem; }
+
+    .spotlight-visual {
+      position: relative; aspect-ratio: 4/3; border-radius: var(--radius-lg);
+      overflow: hidden; display: grid; place-items: center;
+      background: radial-gradient(1200px circle at 30% 20%, rgba(99, 102, 241, 0.15), transparent 40%),
+                  radial-gradient(800px circle at 80% 70%, rgba(34, 211, 238, 0.1), transparent 50%),
+                  var(--bg-surface);
+      border: 1px solid var(--border-color);
+    }
+    .spotlight-visual::before {
+      content: ''; position: absolute; inset: 0;
+      background: repeating-linear-gradient(45deg, transparent, transparent 10px, rgba(255,255,255,0.02) 10px, rgba(255,255,255,0.02) 20px);
+      pointer-events: none;
+    }
+
+    /* ===== TELEGRAM CHAT MOCKUP ===== */
+    .telegram-chat {
+      width: 92%; max-width: 420px; font-family: var(--font-body);
+      background: var(--telegram-bg); border-radius: 14px;
+      box-shadow: 0 12px 50px rgba(0,0,0,0.6); border: 1px solid rgba(255,255,255,0.08);
+      overflow: hidden; display: flex; flex-direction: column;
+    }
+    .tg-header {
+      display: flex; align-items: center; gap: 0.75rem; padding: 0.85rem 1rem;
+      background: rgba(25, 35, 48, 0.95); border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    .tg-avatar {
+      width: 36px; height: 36px; border-radius: 50%;
+      background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+      display: grid; place-items: center; font-weight: 600; font-size: 0.9rem;
+    }
+    .tg-info { display: flex; flex-direction: column; }
+    .tg-name { font-weight: 600; font-size: 0.95rem; }
+    .tg-status { font-size: 0.75rem; color: var(--accent-secondary); display: flex; align-items: center; gap: 0.3rem; }
+    .tg-status::before {
+      content: ''; width: 6px; height: 6px; border-radius: 50%;
+      background: #22c55e; display: inline-block;
+    }
+    .tg-messages {
+      flex: 1; padding: 1rem; display: flex; flex-direction: column; gap: 0.75rem;
+      max-height: 280px; overflow-y: auto; scrollbar-width: thin;
+      scrollbar-color: rgba(255,255,255,0.2) transparent;
+    }
+    .tg-messages::-webkit-scrollbar { width: 4px; }
+    .tg-messages::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.2); border-radius: 2px; }
+    
+    .tg-message {
+      max-width: 85%; padding: 0.65rem 0.9rem; border-radius: 14px;
+      font-size: 0.9rem; line-height: 1.4; position: relative;
+      animation: messageSlide 0.3s ease-out forwards; opacity: 0; transform: translateY(8px);
+    }
+    @keyframes messageSlide { to { opacity: 1; transform: translateY(0); } }
+    
+    .tg-message.user {
+      align-self: flex-end; background: var(--telegram-user);
+      border-bottom-right-radius: 4px;
+    }
+    .tg-message.agent {
+      align-self: flex-start; background: var(--telegram-agent);
+      border-bottom-left-radius: 4px; border: 1px solid rgba(82, 136, 193, 0.3);
+    }
+    .tg-message .time {
+      display: block; font-size: 0.7rem; color: rgba(255,255,255,0.6);
+      margin-top: 0.3rem; text-align: right;
+    }
+    .tg-message.agent .time { color: rgba(255,255,255,0.5); }
+    
+    .tg-typing {
+      align-self: flex-start; display: flex; gap: 3px; padding: 0.75rem 1rem;
+      background: var(--telegram-agent); border-radius: 14px;
+      border-bottom-left-radius: 4px; border: 1px solid rgba(82, 136, 193, 0.3);
+    }
+    .tg-typing span {
+      width: 6px; height: 6px; border-radius: 50%; background: var(--text-secondary);
+      animation: typingDot 1.4s infinite ease-in-out;
+    }
+    .tg-typing span:nth-child(2) { animation-delay: 0.2s; }
+    .tg-typing span:nth-child(3) { animation-delay: 0.4s; }
+    @keyframes typingDot { 0%, 60%, 100% { transform: translateY(0); } 30% { transform: translateY(-4px); } }
+    
+    .tg-footer {
+      padding: 0.75rem 1rem; border-top: 1px solid rgba(255,255,255,0.06);
+      display: flex; align-items: center; gap: 0.75rem;
+    }
+    .tg-input {
+      flex: 1; background: rgba(255,255,255,0.08); border: none;
+      border-radius: 20px; padding: 0.5rem 1rem; color: var(--text-primary);
+      font-size: 0.9rem; outline: none;
+    }
+    .tg-input::placeholder { color: rgba(255,255,255,0.4); }
+    .tg-send {
+      width: 32px; height: 32px; border-radius: 50%;
+      background: var(--telegram-accent); display: grid; place-items: center;
+      transition: transform var(--transition-base);
+    }
+    .tg-send:hover { transform: scale(1.05); }
+    .tg-send svg { width: 14px; height: 14px; fill: white; }
+
+    /* ===== PROJECTS GRID ===== */
+    .projects-grid {
+      display: grid; gap: 1.5rem;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    }
+    .project-card {
+      display: flex; flex-direction: column; gap: 1rem; padding: 1.5rem;
+      transition: transform var(--transition-base), box-shadow var(--transition-base);
+      position: relative; overflow: hidden;
+    }
+    .project-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 20px 50px -15px rgba(0, 0, 0, 0.6);
+      border-color: rgba(99, 102, 241, 0.4);
+    }
+    .project-card::before {
+      content: ''; position: absolute; inset: 0; z-index: -1;
+      background: linear-gradient(135deg, rgba(99, 102, 241, 0.08), transparent 50%);
+      opacity: 0; transition: opacity var(--transition-base);
+    }
+    .project-card:hover::before { opacity: 1; }
+    
+    .project-header { display: flex; justify-content: space-between; align-items: flex-start; gap: 1rem; }
+    .project-title { font-weight: 600; font-size: 1.25rem; }
+    .project-meta { display: flex; flex-direction: column; align-items: flex-end; gap: 0.4rem; }
+    .project-tech { font-family: var(--font-mono); font-size: 0.8rem; color: var(--text-secondary); }
+    .project-stats { display: flex; gap: 0.5rem; font-size: 0.75rem; color: var(--text-secondary); }
+    .project-stats .badge { padding: 0.2rem 0.5rem; font-size: 0.7rem; }
+    
+    .project-desc { color: var(--text-secondary); font-size: 0.95rem; flex-grow: 1; }
+    .project-links { display: flex; gap: 0.75rem; margin-top: auto; }
+    .link-icon {
+      width: 20px; height: 20px; display: inline-flex; align-items: center; justify-content: center;
+      color: var(--text-secondary); transition: color var(--transition-base);
+    }
+    .link-icon:hover { color: var(--accent-primary); }
+    
+    .star-count {
+      display: inline-flex; align-items: center; gap: 0.25rem;
+      font-family: var(--font-mono); font-size: 0.8rem;
+    }
+    .star-count svg { width: 14px; height: 14px; fill: var(--text-secondary); }
+    .star-count.loading { opacity: 0.6; }
+
+    /* ===== SPONSOR SECTION ===== */
+    #sponsor { background: linear-gradient(180deg, rgba(15, 20, 30, 0.5), transparent); }
+    .sponsor-card {
+      max-width: 600px; margin-inline: auto; text-align: center;
+      padding: 2rem; display: flex; flex-direction: column; gap: 1.5rem;
+    }
+    .sponsor-card p { color: var(--text-secondary); }
+    .ton-wallet {
+      background: rgba(0, 152, 234, 0.1);
+      border: 1px solid rgba(0, 152, 234, 0.3);
+      border-radius: var(--radius-md);
+      padding: 1rem; display: flex; align-items: center; justify-content: space-between;
+      gap: 1rem; flex-wrap: wrap;
+    }
+    .ton-address {
+      font-family: var(--font-mono); font-size: 0.85rem; color: var(--text-primary);
+      word-break: break-all; text-align: left; flex: 1; min-width: 200px;
+    }
+    .copy-btn {
+      display: inline-flex; align-items: center; gap: 0.4rem;
+      padding: 0.5rem 1rem; border-radius: var(--radius-sm);
+      background: var(--ton-accent); color: white; font-weight: 500;
+      transition: all var(--transition-base); border: none;
+    }
+    .copy-btn:hover { transform: translateY(-1px); box-shadow: 0 4px 15px rgba(0, 152, 234, 0.4); }
+    .copy-btn:active { transform: translateY(0); }
+    .copy-btn.copied { background: #22c55e; }
+    .copy-btn svg { width: 16px; height: 16px; }
+    .qr-placeholder {
+      width: 120px; height: 120px; border-radius: 12px;
+      background: linear-gradient(135deg, rgba(0,152,234,0.2), rgba(34,211,238,0.15));
+      border: 2px dashed rgba(0, 152, 234, 0.4);
+      display: grid; place-items: center; color: var(--text-secondary);
+      font-size: 0.75rem; text-align: center; padding: 0.5rem;
+    }
+    .sponsor-note { font-size: 0.85rem; color: var(--text-secondary); }
+
+    /* ===== PHILOSOPHY SECTION ===== */
+    #philosophy { background: linear-gradient(180deg, rgba(15, 20, 30, 0.5), transparent); }
+    .philosophy-grid {
+      display: grid; gap: 2rem; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      margin-top: 2rem;
+    }
+    .philosophy-item {
+      padding: 1.5rem; border-radius: var(--radius-md);
+      border: 1px solid var(--border-color);
+      transition: border-color var(--transition-base);
+    }
+    .philosophy-item:hover { border-color: var(--accent-primary); }
+    .philosophy-item h4 { font-weight: 600; margin-bottom: 0.75rem; font-size: 1.1rem; }
+    .philosophy-item p { color: var(--text-secondary); font-size: 0.95rem; }
+
+    /* ===== CONTACT SECTION ===== */
+    #contact { text-align: center; }
+    .contact-email {
+      font-size: 1.1rem; margin: 1rem 0; display: inline-flex; align-items: center; gap: 0.5rem;
+      padding: 0.75rem 1.5rem; background: var(--bg-surface);
+      border: 1px solid var(--border-color); border-radius: var(--radius-md);
+      transition: all var(--transition-base);
+    }
+    .contact-email:hover { border-color: var(--accent-primary); transform: translateY(-2px); }
+    .contact-email svg { width: 18px; height: 18px; }
+    
+    .contact-links {
+      display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap;
+      margin: 1.5rem 0;
+    }
+    .contact-link {
+      display: flex; align-items: center; gap: 0.5rem; padding: 0.6rem 1rem;
+      border-radius: var(--radius-sm); border: 1px solid var(--border-color);
+      transition: all var(--transition-base); font-size: 0.9rem;
+    }
+    .contact-link:hover {
+      background: var(--bg-surface-hover); border-color: var(--accent-primary);
+      transform: translateY(-2px);
+    }
+    .contact-link svg { width: 18px; height: 18px; }
+
+    /* ===== FOOTER SOCIAL BAR ===== */
+    .footer-social {
+      display: flex; justify-content: center; gap: 0.75rem; flex-wrap: wrap;
+      padding-block: 1rem; border-top: 1px solid var(--border-color);
+      margin-top: 2rem;
+    }
+    .social-link {
+      display: inline-flex; align-items: center; gap: 0.4rem;
+      padding: 0.4rem 0.8rem; border-radius: var(--radius-sm);
+      font-size: 0.85rem; color: var(--text-secondary);
+      transition: all var(--transition-base); border: 1px solid transparent;
+    }
+    .social-link:hover {
+      color: var(--text-primary); border-color: var(--accent-primary);
+      background: var(--bg-surface-hover);
+    }
+    .social-link svg { width: 16px; height: 16px; }
+    .social-link.mono { font-family: var(--font-mono); }
+
+    footer {
+      padding-block: 1.5rem; text-align: center; color: var(--text-secondary);
+      font-size: 0.85rem;
+    }
+
+    /* ===== ANIMATIONS ===== */
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+    .animate-float { animation: float 6s ease-in-out infinite; }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.7; }
+    }
+    .animate-pulse { animation: pulse 2s ease-in-out infinite; }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 768px) {
+      .nav-toggle { display: flex; }
+      nav ul {
+        position: fixed; top: 70px; left: 0; right: 0; background: var(--bg-primary);
+        flex-direction: column; padding: 1.5rem; gap: 1rem; border-top: 1px solid var(--border-color);
+        transform: translateY(-150%); transition: transform var(--transition-base);
+        z-index: 99;
+      }
+      nav ul.active { transform: translateY(0); }
+      .hero-title { font-size: 2.5rem; }
+      .project-spotlight { text-align: center; }
+      .spotlight-actions { justify-content: center; }
+      .telegram-chat { width: 95%; }
+      .ton-wallet { flex-direction: column; text-align: center; }
+      .ton-address { text-align: center; }
+    }
+
+    /* ===== FALLBACK FOR NO-WEBGL ===== */
+    .no-webgl #canvas-container { display: none; }
+    .no-webgl #hero::after {
+      content: ''; position: absolute; inset: 0; z-index: 1;
+      background: radial-gradient(600px circle at 70% 30%, rgba(99, 102, 241, 0.12), transparent 60%),
+                  radial-gradient(400px circle at 20% 80%, rgba(34, 211, 238, 0.08), transparent 50%);
+      animation: float 8s ease-in-out infinite;
+      pointer-events: none;
+    }
+  </style>
 </head>
-<body class="dark-mode">
+<body>
+  <a href="#main" class="sr-only">Skip to main content</a>
 
-    <div id="desktop">
-        </div>
-
-    <div id="terminal" class="window draggable-window">
-        <div class="window-header" id="terminal-header">
-            <div class="header-dots">
-                <span class="dot red"></span>
-                <span class="dot yellow"></span>
-                <span class="dot green"></span>
-            </div>
-            <span class="window-title">bash — piratheon@archlinux</span>
-        </div>
-        <div id="terminal-body" class="window-body">
-            <div id="output"></div>
-            <div class="input-line">
-                <span class="prompt"><span class="user">piratheon@archlinux</span><span class="tilde">~</span>$</span>
-                <input type="text" id="command-input" autocomplete="off" autofocus>
-            </div>
-        </div>
+  <header>
+    <div class="container header-inner">
+      <a href="#" class="logo" aria-label="piratheon home">
+        <img src=".github/piratheon_eye.svg" height="" width="44" type="image/svg+xml"/>
+        <span>PIRΛTHΞΘN</span>
+      </a>
+      
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false" aria-controls="nav-menu">
+        <span></span><span></span><span></span>
+      </button>
+      
+      <nav>
+        <ul id="nav-menu">
+          <li><a href="#ai-focus">AI Focus</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#sponsor">Sponsor</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
     </div>
+  </header>
 
-    <script src="script.js"></script>
+  <main id="main">
+    <section id="hero">
+      <div id="canvas-container" aria-hidden="true"></div>
+      
+      <div class="hero-content">
+        <h1 class="hero-title">
+          <span class="text-gradient">Chafiq El Ibrahimi</span><br />
+          System-Oriented Development
+        </h1>
+        <p class="hero-subtitle">
+          Linux-focused developer and ethical security researcher building privacy-respecting tooling, agentic AI systems, and low-level automation workflows.
+        </p>
+        <div class="hero-cta">
+          <a href="#ai-focus" class="btn btn-primary">Explore rika-agent</a>
+          <a href="https://github.com/piratheon" target="_blank" rel="noopener noreferrer" class="btn btn-outline">
+            View GitHub
+          </a>
+        </div>
+      </div>
+      
+      <div class="scroll-indicator">
+        <span>Scroll</span>
+      </div>
+    </section>
+
+    <section id="ai-focus" class="section">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">Agentic AI Focus</h2>
+          <p class="section-desc">Self-hosted, privacy-first AI agents that run on your infrastructure with full control and transparency.</p>
+        </div>
+        
+        <div class="project-spotlight">
+          <div class="spotlight-content">
+            <h3>rika-agent</h3>
+            <p>The elite, customizable agentic AI system — a persistent, self-hosted assistant that integrates with your shell, file system, and network. Designed for developers who demand control, privacy, and extensibility.</p>
+            
+            <div class="features-grid">
+              <div class="feature-item">JSON function calling with native provider APIs</div>
+              <div class="feature-item">Background system monitoring with zero-token idle</div>
+              <div class="feature-item">Three-tier code sandbox (RestrictedPython to Docker)</div>
+              <div class="feature-item">AES-256-GCM encrypted key storage</div>
+              <div class="feature-item">Telegram-native UX with LiveBubble feedback</div>
+              <div class="feature-item">Ollama and G4F support for local/free inference</div>
+            </div>
+            
+            <div class="spotlight-actions">
+              <a href="https://github.com/piratheon/rika-agent" target="_blank" rel="noopener noreferrer" class="btn btn-outline mono">
+                github.com/piratheon/rika-agent
+              </a>
+              <a href="https://github.com/piratheon/rika-agent#quick-start" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
+                Quick Start Guide
+              </a>
+            </div>
+          </div>
+          
+          <div class="spotlight-visual glass">
+            <div class="telegram-chat animate-float" role="region" aria-label="rika-agent Telegram chat demo">
+              <div class="tg-header">
+                <div class="tg-avatar">R</div>
+                <div class="tg-info">
+                  <span class="tg-name">rika-agent</span>
+                  <span class="tg-status">online</span>
+                </div>
+              </div>
+              <div class="tg-messages" id="tg-messages">
+                <!-- Messages injected by JS -->
+              </div>
+              <div class="tg-footer">
+                <input type="text" class="tg-input mono" placeholder="Type a command..." disabled aria-label="Chat input (demo)" />
+                <button class="tg-send" aria-label="Send message" disabled>
+                  <svg viewBox="0 0 24 24"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects" class="section">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">Featured Projects</h2>
+          <p class="section-desc">Tools built for control, privacy, and technical depth — from terminal utilities to desktop applications.</p>
+        </div>
+        
+        <div class="projects-grid">
+          <!-- rika-agent -->
+          <article class="project-card glass" data-repo="rika-agent">
+            <div class="project-header">
+              <h3 class="project-title">rika-agent</h3>
+              <div class="project-meta">
+                <span class="project-tech mono">Python • Telegram</span>
+                <div class="project-stats">
+                  <span class="badge star-count loading" data-target="0">
+                    <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                    <span class="stars">0</span>
+                  </span>
+                  <span class="badge" data-language>Python</span>
+                </div>
+              </div>
+            </div>
+            <p class="project-desc">
+              Self-hosted Telegram agentic AI with system monitoring, code execution sandboxing, and encrypted key management. Built for privacy-first automation.
+            </p>
+            <div class="project-links">
+              <a href="https://github.com/piratheon/rika-agent" target="_blank" rel="noopener noreferrer" class="link-icon" aria-label="rika-agent on GitHub">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+              </a>
+              <a href="https://github.com/piratheon/rika-agent#quick-start" target="_blank" rel="noopener noreferrer" class="link-icon" aria-label="Quick start guide">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19 19H5V5h7V3H5a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7h-2v7zM14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7z"/></svg>
+              </a>
+            </div>
+          </article>
+          
+          <!-- ori -->
+          <article class="project-card glass" data-repo="ori">
+            <div class="project-header">
+              <h3 class="project-title">ori</h3>
+              <div class="project-meta">
+                <span class="project-tech mono">C++ • TUI/GUI</span>
+                <div class="project-stats">
+                  <span class="badge star-count loading" data-target="0">
+                    <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                    <span class="stars">0</span>
+                  </span>
+                  <span class="badge" data-language>C++</span>
+                </div>
+              </div>
+            </div>
+            <p class="project-desc">
+              Terminal-first AI assistant with both TUI and web-based GUI. Integrates OpenRouter for multi-LLM access. Built for developers who want AI workflows in the terminal or browser.
+            </p>
+            <div class="project-links">
+              <a href="https://github.com/piratheon/ori" target="_blank" rel="noopener noreferrer" class="link-icon" aria-label="ori on GitHub">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+              </a>
+              <a href="https://aur.archlinux.org/packages/ori" target="_blank" rel="noopener noreferrer" class="link-icon" aria-label="ori on AUR">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14H9V8h2v8zm4 0h-2V8h2v8z"/></svg>
+              </a>
+            </div>
+          </article>
+          
+          <!-- aion-dl -->
+          <article class="project-card glass" data-repo="aion-dl">
+            <div class="project-header">
+              <h3 class="project-title">aion-dl</h3>
+              <div class="project-meta">
+                <span class="project-tech mono">Python • GTK4</span>
+                <div class="project-stats">
+                  <span class="badge star-count loading" data-target="0">
+                    <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                    <span class="stars">0</span>
+                  </span>
+                  <span class="badge" data-language>Python</span>
+                </div>
+              </div>
+            </div>
+            <p class="project-desc">
+              Polished GTK4 + Libadwaita GUI frontend for yt-dlp. Features per-job controls, concurrent downloads, advanced format/post-processing, subtitle management, and SponsorBlock integration.
+            </p>
+            <div class="project-links">
+              <a href="https://github.com/piratheon/aion-dl" target="_blank" rel="noopener noreferrer" class="link-icon" aria-label="aion-dl on GitHub">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+              </a>
+            </div>
+          </article>
+          
+          <!-- Harpocrates -->
+          <article class="project-card glass" data-repo="Harpocrates">
+            <div class="project-header">
+              <h3 class="project-title">Harpocrates</h3>
+              <div class="project-meta">
+                <span class="project-tech mono">JavaScript • Steganography</span>
+                <div class="project-stats">
+                  <span class="badge star-count loading" data-target="0">
+                    <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                    <span class="stars">0</span>
+                  </span>
+                  <span class="badge" data-language>JavaScript</span>
+                </div>
+              </div>
+            </div>
+            <p class="project-desc">
+              Client-side web application for encrypting and hiding files inside images using AES-256-GCM and PBKDF2. All operations occur locally in-browser — no server uploads, no data leakage.
+            </p>
+            <div class="project-links">
+              <a href="https://github.com/piratheon/Harpocrates" target="_blank" rel="noopener noreferrer" class="link-icon" aria-label="Harpocrates on GitHub">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+              </a>
+              <a href="https://piratheon.github.io/Harpocrates/" target="_blank" rel="noopener noreferrer" class="link-icon" aria-label="Harpocrates live demo">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19 19H5V5h7V3H5a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7h-2v7zM14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7z"/></svg>
+              </a>
+            </div>
+          </article>
+          
+          <!-- clpbrd -->
+          <article class="project-card glass" data-repo="clpbrd">
+            <div class="project-header">
+              <h3 class="project-title">clpbrd</h3>
+              <div class="project-meta">
+                <span class="project-tech mono">C++ • CLI</span>
+                <div class="project-stats">
+                  <span class="badge star-count loading" data-target="0">
+                    <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                    <span class="stars">0</span>
+                  </span>
+                  <span class="badge" data-language>C++</span>
+                </div>
+              </div>
+            </div>
+            <p class="project-desc">
+              Minimal, cross-platform command-line clipboard utility written in C++. Provides reliable copy-to-clipboard functionality for scripts and terminal workflows without external dependencies.
+            </p>
+            <div class="project-links">
+              <a href="https://github.com/piratheon/clpbrd" target="_blank" rel="noopener noreferrer" class="link-icon" aria-label="clpbrd on GitHub">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+              </a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Sponsor Section -->
+    <section id="sponsor" class="section">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">Support Development</h2>
+          <p class="section-desc">If my tools have helped you, consider supporting continued development of privacy-first, open-source software.</p>
+        </div>
+        
+        <div class="sponsor-card glass">
+          <div class="ton-wallet">
+            <img src=".github/wallet.png"/>
+            <div style="flex: 1; min-width: 200px;">
+              <div class="badge ton" style="margin-bottom: 0.75rem;">
+                <svg viewBox="0 0 24 24" fill="currentColor" style="width:14px;height:14px"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+                Telegram TON
+              </div>
+              <div class="ton-address mono" id="ton-address">UQAbjx-d8UQ_FxEgONFB3Y412f4fW7e-zOdBXmMSs59pkYog</div>
+              <button class="copy-btn" id="copy-ton" aria-label="Copy TON wallet address">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+                <span>Copy Address</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="philosophy" class="section">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">Development Philosophy</h2>
+          <p class="section-desc">Principles that guide every tool, system, and workflow I build.</p>
+        </div>
+        
+        <div class="philosophy-grid">
+          <div class="philosophy-item glass">
+            <h4>Linux-First</h4>
+            <p>Tools are designed for Unix-like environments first, leveraging native capabilities, POSIX standards, and terminal-centric workflows.</p>
+          </div>
+          <div class="philosophy-item glass">
+            <h4>Security-Aware</h4>
+            <p>Privacy and system integrity are non-negotiable. Encryption, sandboxing, and minimal attack surfaces are built in from the start.</p>
+          </div>
+          <div class="philosophy-item glass">
+            <h4>System-Oriented</h4>
+            <p>Focus on low-level understanding: process management, I/O, memory, and networking — not just abstracted frameworks.</p>
+          </div>
+          <div class="philosophy-item glass">
+            <h4>Control Over Convenience</h4>
+            <p>User autonomy and transparency take precedence over opaque automation. Every action should be inspectable and reversible.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="section">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">Get In Touch</h2>
+          <p class="section-desc">Open to collaboration on system tooling, security research, and agentic AI projects.</p>
+        </div>
+        
+        <a href="mailto:chafiq.dev@gmail.com" class="contact-email">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+          chafiq.dev@gmail.com
+        </a>
+        
+        <div class="contact-links">
+          <a href="https://github.com/piratheon" target="_blank" rel="noopener noreferrer" class="contact-link mono">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+            @piratheon
+          </a>
+          <a href="https://t.me/piratheon" target="_blank" rel="noopener noreferrer" class="contact-link mono">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M11.944 17.97L4.58 13.62 19.54 3.5l-1.36 13.03H4.58z"/></svg>
+            @piratheon
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer Social Bar -->
+  <div class="container">
+    <div class="footer-social">
+      <a href="https://github.com/piratheon" target="_blank" rel="noopener noreferrer" class="social-link mono">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+        GitHub
+      </a>
+      <a href="mailto:chafiq.dev@gmail.com" class="social-link">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+        Email
+      </a>
+      <a href="https://facebook.com/piratheon" target="_blank" rel="noopener noreferrer" class="social-link">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.852V15.466h-2.916v-3.092h2.916V9.81c0-2.888 1.733-4.474 4.383-4.474 1.27 0 2.368.094 2.682.137v3.118h-1.83c-1.43 0-1.704.68-1.704 1.676v2.176h3.407l-.447 3.092h-2.96v6.464C19.612 23.027 24 18.062 24 12.073z"/></svg>
+        Facebook
+      </a>
+      <a href="https://instagram.com/piratheon" target="_blank" rel="noopener noreferrer" class="social-link">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 1.265.058 2.128.26 2.89.558.763.298 1.407.694 2.05 1.337.643.643 1.039 1.287 1.337 2.05.298.762.5 1.625.558 2.89.058 1.266.07 1.646.07 4.85s-.012 3.584-.07 4.85c-.058 1.265-.26 2.128-.558 2.89-.298.763-.694 1.407-1.337 2.05-.643.643-1.287 1.039-2.05 1.337-.762.298-1.625.5-2.89.558-1.266.058-1.646.07-4.85.07s-3.584-.012-4.85-.07c-1.265-.058-2.128-.26-2.89-.558-.763-.298-1.407-.694-2.05-1.337-.643-.643-1.039-1.287-1.337-2.05-.298-.762-.5-1.625-.558-2.89-.058-1.266-.07-1.646-.07-4.85s.012-3.584.07-4.85c.058-1.265.26-2.128.558-2.89.298-.763.694-1.407 1.337-2.05.643-.643 1.287-1.039 2.05-1.337.762-.298 1.625-.5 2.89-.558 1.266-.058 1.646-.07 4.85-.07zm0-2.163c-3.259 0-3.667.014-4.947.072-1.28.058-2.149.26-2.91.558-.76.298-1.404.694-2.047 1.337-.643.643-1.039 1.287-1.337 2.047-.298.761-.5 1.63-.558 2.91-.058 1.28-.072 1.688-.072 4.947s.014 3.667.072 4.947c.058 1.28.26 2.149.558 2.91.298.76.694 1.404 1.337 2.047.643.643 1.287 1.039 2.047 1.337.761.298 1.63.5 2.91.558 1.28.058 1.688.072 4.947.072s3.667-.014 4.947-.072c1.28-.058 2.149-.26 2.91-.558.76-.298 1.404-.694 2.047-1.337.643-.643 1.039-1.287 1.337-2.047.298-.761.5-1.63.558-2.91.058-1.28.072-1.688.072-4.947s-.014-3.667-.072-4.947c-.058-1.28-.26-2.149-.558-2.91-.298-.76-.694-1.404-1.337-2.047-.643-.643-1.287-1.039-2.047-1.337-.761-.298-1.63-.5-2.91-.558-1.28-.058-1.688-.072-4.947-.072zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+        Instagram
+      </a>
+      <a href="https://reddit.com/user/piratheon" target="_blank" rel="noopener noreferrer" class="social-link">
+       <svg fill="#94a3b8" width="256px" height="256px" viewBox="0 0 1024.00 1024.00" xmlns="http://www.w3.org/2000/svg" class="icon" stroke="#94a3b8" stroke-width="0.01024"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round" stroke="#CCCCCC" stroke-width="4.096"></g><g id="SVGRepo_iconCarrier"> <path d="M584 548a36 36 0 1 0 72 0 36 36 0 1 0-72 0zm144-108a35.9 35.9 0 0 0-32.5 20.6c18.8 14.3 34.4 30.7 45.9 48.8A35.98 35.98 0 0 0 728 440zM512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm245 477.9c4.6 13.5 7 27.6 7 42.1 0 99.4-112.8 180-252 180s-252-80.6-252-180c0-14.5 2.4-28.6 7-42.1A72.01 72.01 0 0 1 296 404c27.1 0 50.6 14.9 62.9 37 36.2-19.8 80.2-32.8 128.1-36.1l58.4-131.1c4.3-9.8 15.2-14.8 25.5-11.8l91.6 26.5a54.03 54.03 0 0 1 101.6 25.6c0 29.8-24.2 54-54 54-23.5 0-43.5-15.1-50.9-36.1L577 308.3l-43 96.5c49.1 3 94.2 16.1 131.2 36.3 12.3-22.1 35.8-37 62.9-37 39.8 0 72 32.2 72 72-.1 29.3-17.8 54.6-43.1 65.8zm-171.3 83c-14.9 11.7-44.3 24.3-73.7 24.3s-58.9-12.6-73.7-24.3c-9.3-7.3-22.7-5.7-30 3.6-7.3 9.3-5.7 22.7 3.6 30 25.7 20.4 65 33.5 100.1 33.5 35.1 0 74.4-13.1 100.2-33.5 9.3-7.3 10.9-20.8 3.6-30a21.46 21.46 0 0 0-30.1-3.6zM296 440a35.98 35.98 0 0 0-13.4 69.4c11.5-18.1 27.1-34.5 45.9-48.8A35.9 35.9 0 0 0 296 440zm72 108a36 36 0 1 0 72 0 36 36 0 1 0-72 0z"></path> </g></svg>
+        Reddit
+      </a>
+      <a href="https://aur.archlinux.org/account/piratheon" target="_blank" rel="noopener noreferrer" class="social-link mono aur">
+<svg fill="#94a3b8" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" stroke="#94a3b8"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M15.188 0.807c-1.354 3.313-2.167 5.484-3.672 8.703 0.922 0.979 2.057 2.12 3.896 3.406-1.979-0.818-3.328-1.635-4.339-2.484-1.927 4.026-4.948 9.75-11.073 20.76 4.818-2.781 8.547-4.495 12.026-5.151-0.146-0.641-0.234-1.333-0.229-2.063l0.005-0.151c0.078-3.089 1.682-5.458 3.583-5.297s3.38 2.792 3.307 5.88c-0.016 0.578-0.083 1.135-0.198 1.656 3.443 0.672 7.135 2.38 11.885 5.125-0.938-1.724-1.771-3.281-2.573-4.76-1.255-0.974-2.568-2.245-5.24-3.62 1.839 0.479 3.151 1.031 4.177 1.646-8.12-15.109-8.771-17.12-11.557-23.651zM30.531 28.479v-0.828h-0.313v-0.115h0.75v0.115h-0.313v0.828h-0.125zM31.099 28.479v-0.943h0.188l0.224 0.667c0.021 0.063 0.036 0.109 0.042 0.141 0.010-0.031 0.031-0.083 0.052-0.151l0.224-0.656h0.172v0.943h-0.12v-0.792l-0.276 0.792h-0.115l-0.271-0.802v0.802h-0.12z"></path> </g></svg>
+        AUR
+      </a>
+      <a href="https://t.me/piratheon" target="_blank" rel="noopener noreferrer" class="social-link mono">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M11.944 17.97L4.58 13.62 19.54 3.5l-1.36 13.03H4.58z"/></svg>
+        Telegram
+      </a>
+    </div>
+  </div>
+
+  <footer>
+    <div class="container">
+      <p>&copy; <span id="year"></span> Chafiq El Ibrahimi.</p>
+    </div>
+  </footer>
+
+  <script>
+    // ===== UTILITIES =====
+    const $ = (sel, ctx = document) => ctx.querySelector(sel);
+    const $$ = (sel, ctx = document) => Array.from(ctx.querySelectorAll(sel));
+    
+    $('#year').textContent = new Date().getFullYear();
+    
+    // ===== HEADER SCROLL EFFECT =====
+    const header = $('header');
+    const onScroll = () => {
+      if (window.scrollY > 50) header.classList.add('scrolled');
+      else header.classList.remove('scrolled');
+    };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+    
+    // ===== MOBILE NAV TOGGLE =====
+    const navToggle = $('.nav-toggle');
+    const navMenu = $('#nav-menu');
+    navToggle?.addEventListener('click', () => {
+      const expanded = navToggle.getAttribute('aria-expanded') === 'true';
+      navToggle.setAttribute('aria-expanded', !expanded);
+      navMenu.classList.toggle('active');
+    });
+    
+    $$('#nav-menu a').forEach(link => {
+      link.addEventListener('click', () => {
+        navMenu.classList.remove('active');
+        navToggle.setAttribute('aria-expanded', 'false');
+      });
+    });
+    
+    // ===== TELEGRAM CHAT DEMO =====
+    const chatMessages = [
+      { sender: 'user', text: '/autowatch "guard my server"', time: '14:23' },
+      { sender: 'agent', text: '✓ Created 4 watchers: system, process, url, log\n✓ Monitoring active. Alerts will trigger on anomalies.', time: '14:23' },
+      { sender: 'user', text: 'analyze nginx errors from last 24h', time: '14:25' },
+      { sender: 'agent', text: '→ Running: tail -1000 /var/log/nginx/error.log\n→ Pattern analysis complete. Top issue: upstream timeout (67%)\n→ Report saved to ~/.Rika-Workspace/nginx-report.md', time: '14:26' },
+      { sender: 'agent', text: '✓ File delivered to Telegram.', time: '14:26' }
+    ];
+    
+    const tgContainer = $('#tg-messages');
+    let messageIndex = 0;
+    
+    function addMessage(msg) {
+      const el = document.createElement('div');
+      el.className = `tg-message ${msg.sender}`;
+      el.innerHTML = `${msg.text}<span class="time">${msg.time}</span>`;
+      el.style.animationDelay = `${messageIndex * 0.15}s`;
+      tgContainer.appendChild(el);
+      tgContainer.scrollTop = tgContainer.scrollHeight;
+      messageIndex++;
+    }
+    
+    function startChatDemo() {
+      tgContainer.innerHTML = '';
+      messageIndex = 0;
+      
+      function showTyping() {
+        const typing = document.createElement('div');
+        typing.className = 'tg-typing';
+        typing.innerHTML = '<span></span><span></span><span></span>';
+        typing.id = 'typing-indicator';
+        tgContainer.appendChild(typing);
+        tgContainer.scrollTop = tgContainer.scrollHeight;
+      }
+      
+      function hideTyping() {
+        const typing = $('#typing-indicator');
+        if (typing) typing.remove();
+      }
+      
+      let i = 0;
+      const interval = setInterval(() => {
+        if (i >= chatMessages.length) {
+          clearInterval(interval);
+          setTimeout(startChatDemo, 4000);
+          return;
+        }
+        
+        const msg = chatMessages[i];
+        
+        if (msg.sender === 'agent' && i > 0 && i < chatMessages.length - 1) {
+          showTyping();
+          setTimeout(() => {
+            hideTyping();
+            addMessage(msg);
+          }, 800);
+        } else {
+          addMessage(msg);
+        }
+        i++;
+      }, 1200);
+    }
+    
+    const chatObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          startChatDemo();
+          chatObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.3 });
+    
+    if ($('.telegram-chat')) {
+      chatObserver.observe($('.telegram-chat'));
+    }
+    
+    // ===== GITHUB API INTEGRATION =====
+    const GITHUB_USER = 'piratheon';
+    const REPOS = ['rika-agent', 'ori', 'aion-dl', 'Harpocrates', 'clpbrd'];
+    const FALLBACK_STARS = { 'rika-agent': 42, 'ori': 18, 'aion-dl': 31, 'Harpocrates': 27, 'clpbrd': 15 };
+    const FALLBACK_LANG = { 'rika-agent': 'Python', 'ori': 'C++', 'aion-dl': 'Python', 'Harpocrates': 'JavaScript', 'clpbrd': 'C++' };
+    
+    const cache = {
+      get(key) {
+        try {
+          const item = localStorage.getItem(`gh_${key}`);
+          if (!item) return null;
+          const { value, expiry } = JSON.parse(item);
+          if (Date.now() > expiry) {
+            localStorage.removeItem(`gh_${key}`);
+            return null;
+          }
+          return value;
+        } catch { return null; }
+      },
+      set(key, value, ttlMinutes = 60) {
+        try {
+          const item = { value, expiry: Date.now() + (ttlMinutes * 60 * 1000) };
+          localStorage.setItem(`gh_${key}`, JSON.stringify(item));
+        } catch {}
+      }
+    };
+    
+    function animateCounter(el, target, duration = 800) {
+      const start = 0;
+      const increment = target / (duration / 16);
+      let current = start;
+      
+      const step = () => {
+        current += increment;
+        if (current < target) {
+          el.textContent = Math.floor(current).toLocaleString();
+          requestAnimationFrame(step);
+        } else {
+          el.textContent = target.toLocaleString();
+        }
+      };
+      step();
+    }
+    
+    async function fetchRepoData(repo) {
+      const cached = cache.get(repo);
+      if (cached) return cached;
+      
+      try {
+        const res = await fetch(`https://api.github.com/repos/${GITHUB_USER}/${repo}`, {
+          headers: { 'Accept': 'application/vnd.github.v3+json' }
+        });
+        
+        if (!res.ok) throw new Error('API error');
+        
+        const data = await res.json();
+        const result = {
+          stars: data.stargazers_count,
+          language: data.language || FALLBACK_LANG[repo] || 'Unknown',
+          updated: data.pushed_at
+        };
+        
+        cache.set(repo, result);
+        return result;
+      } catch (err) {
+        return {
+          stars: FALLBACK_STARS[repo] || 0,
+          language: FALLBACK_LANG[repo] || 'Unknown'
+        };
+      }
+    }
+    
+    async function updateProjectStats() {
+      const cards = $$('.project-card[data-repo]');
+      
+      for (const card of cards) {
+        const repo = card.dataset.repo;
+        const starEl = card.querySelector('.star-count .stars');
+        const langEl = card.querySelector('[data-language]');
+        
+        if (!starEl) continue;
+        
+        const data = await fetchRepoData(repo);
+        
+        starEl.parentElement.classList.remove('loading');
+        animateCounter(starEl, data.stars);
+        
+        if (langEl && data.language) {
+          langEl.textContent = data.language;
+        }
+      }
+    }
+    
+    document.addEventListener('DOMContentLoaded', () => {
+      setTimeout(updateProjectStats, 500);
+    });
+    
+    // ===== COPY TON WALLET =====
+    const copyBtn = $('#copy-ton');
+    const tonAddress = $('#ton-address');
+    
+    copyBtn?.addEventListener('click', async () => {
+      const address = tonAddress.textContent.trim();
+      try {
+        await navigator.clipboard.writeText(address);
+        copyBtn.classList.add('copied');
+        copyBtn.querySelector('span').textContent = 'Copied';
+        setTimeout(() => {
+          copyBtn.classList.remove('copied');
+          copyBtn.querySelector('span').textContent = 'Copy Address';
+        }, 2000);
+      } catch (err) {
+        console.error('Failed to copy:', err);
+      }
+    });
+    
+    // ===== 3D CANVAS SETUP (Three.js) =====
+    document.addEventListener('DOMContentLoaded', () => {
+      const canvas = document.createElement('canvas');
+      const gl = canvas.getContext('webgl') || canvas.getContext('experimental-webgl');
+      const hasWebGL = !!gl;
+      
+      if (!hasWebGL) {
+        document.body.classList.add('no-webgl');
+        return;
+      }
+      
+      if (typeof THREE === 'undefined') {
+        console.warn('Three.js not loaded; using fallback');
+        document.body.classList.add('no-webgl');
+        return;
+      }
+      
+      const container = $('#canvas-container');
+      const scene = new THREE.Scene();
+      const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+      const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true, powerPreference: 'low-power' });
+      
+      renderer.setSize(window.innerWidth, window.innerHeight);
+      renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+      container.appendChild(renderer.domElement);
+      
+      const geometry = new THREE.IcosahedronGeometry(2, 1);
+      const material = new THREE.MeshBasicMaterial({
+        color: 0x6366f1,
+        wireframe: true,
+        transparent: true,
+        opacity: 0.85
+      });
+      const lattice = new THREE.Mesh(geometry, material);
+      scene.add(lattice);
+      
+      const particles = new THREE.Group();
+      const particleGeo = new THREE.SphereGeometry(0.03, 8, 8);
+      const particleMat = new THREE.MeshBasicMaterial({ color: 0x22d3ee });
+      
+      for (let i = 0; i < 80; i++) {
+        const p = new THREE.Mesh(particleGeo, particleMat);
+        p.position.set(
+          (Math.random() - 0.5) * 6,
+          (Math.random() - 0.5) * 6,
+          (Math.random() - 0.5) * 6
+        );
+        particles.add(p);
+      }
+      scene.add(particles);
+      
+      const ambient = new THREE.AmbientLight(0xffffff, 0.3);
+      scene.add(ambient);
+      
+      camera.position.z = 5;
+      
+      let mouseX = 0, mouseY = 0, targetX = 0, targetY = 0;
+      let isIdle = true;
+      let idleTimer;
+      
+      const onPointerMove = (e) => {
+        mouseX = (e.clientX / window.innerWidth) * 2 - 1;
+        mouseY = -(e.clientY / window.innerHeight) * 2 + 1;
+        clearTimeout(idleTimer);
+        isIdle = false;
+        idleTimer = setTimeout(() => { isIdle = true; }, 2000);
+      };
+      window.addEventListener('pointermove', onPointerMove, { passive: true });
+      
+      let scrollY = 0;
+      const onScroll3D = () => {
+        scrollY = window.scrollY / (document.body.scrollHeight - window.innerHeight);
+      };
+      window.addEventListener('scroll', onScroll3D, { passive: true });
+      
+      const clock = new THREE.Clock();
+      const animate = () => {
+        requestAnimationFrame(animate);
+        
+        const delta = clock.getDelta();
+        const time = clock.getElapsedTime();
+        
+        targetX += (mouseX - targetX) * 0.05;
+        targetY += (mouseY - targetY) * 0.05;
+        
+        lattice.rotation.x = time * 0.1 + targetY * 0.3;
+        lattice.rotation.y = time * 0.15 + targetX * 0.3;
+        
+        const scale = 1 + scrollY * 0.4;
+        lattice.scale.set(scale, scale, scale);
+        
+        particles.rotation.y = time * 0.05;
+        particles.children.forEach((p, i) => {
+          p.position.y += Math.sin(time + i) * 0.002;
+        });
+        
+        if (isIdle) {
+          lattice.rotation.x += Math.sin(time * 0.5) * 0.002;
+          lattice.rotation.y += Math.cos(time * 0.3) * 0.002;
+        }
+        
+        renderer.render(scene, camera);
+      };
+      
+      animate();
+      
+      const onResize = () => {
+        camera.aspect = window.innerWidth / window.innerHeight;
+        camera.updateProjectionMatrix();
+        renderer.setSize(window.innerWidth, window.innerHeight);
+      };
+      window.addEventListener('resize', onResize, { passive: true });
+      
+      if (navigator.hardwareConcurrency && navigator.hardwareConcurrency < 4) {
+        let lastFrame = 0;
+        const originalRAF = window.requestAnimationFrame;
+        window.requestAnimationFrame = (cb) => {
+          const now = performance.now();
+          if (now - lastFrame >= 33) {
+            lastFrame = now;
+            originalRAF(cb);
+          }
+        };
+      }
+      
+      document.addEventListener('visibilitychange', () => {
+        if (document.hidden) {
+          renderer.setAnimationLoop(null);
+        } else {
+          animate();
+        }
+      });
+    });
+    
+    // ===== INTERSECTION OBSERVER FOR LAZY 3D INIT =====
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting && typeof THREE !== 'undefined' && !$('#canvas-container').dataset.init) {
+          $('#canvas-container').classList.remove('hidden');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+    
+    observer.observe($('#hero'));
+    
+    // ===== ACCESSIBILITY: Reduce motion preference =====
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      const canvasContainer = $('#canvas-container');
+      if (canvasContainer) {
+        canvasContainer.style.opacity = '0.3';
+      }
+    }
+  </script>
 </body>
 </html>
