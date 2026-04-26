@@ -1,0 +1,34 @@
+<svg width="150" height="150" viewBox="0 0 150 150" fill="none" xmlns="http://www.w3.org/2000/svg">
+
+  <!-- Background -->
+  <rect width="150" height="150" rx="80" fill="#0a0a0c"/>
+
+  <!-- Outer glow ring -->
+  <circle cx="80" cy="75" r="50" stroke="#3c3f47" stroke-width="2" />
+  <circle cx="80" cy="75" r="50" stroke="#556" stroke-width="1" filter="url(#g1)"/>
+
+  <!-- Inner symbol (tri-arc) -->
+  <path d="
+    M80 40
+    C102 55, 102 95, 80 110
+    C58 95, 58 55, 80 40
+  " stroke="#b2bec3" stroke-width="2.4" fill="none"/>
+
+  <!-- Three nodes inside -->
+  <circle cx="80" cy="55" r="4" fill="#dfe6e9"/>
+  <circle cx="95" cy="75" r="4" fill="#9aa0a6"/>
+  <circle cx="80" cy="95" r="4" fill="#717980"/>
+
+  <!-- Glow Filter -->
+  <defs>
+    <filter id="g1">
+      <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+</svg>
+
